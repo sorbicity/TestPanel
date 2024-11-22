@@ -1,4 +1,4 @@
 const config = {
-    GIST_ID: process.env.GIST_ID,
-    TOKEN_GITHUB: process.env.TOKEN_GITHUB
+    GIST_ID: "9bcbcec8844698d54632f7772f3eb081",
+    TOKEN_GITHUB: "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"
 };
