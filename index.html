@@ -83,15 +83,26 @@
             try {
                 const response = await fetch(`https://api.github.com/gists/${config.GIST_ID}`, {
                     headers: {
-                        'Authorization': `token ${config.GITHUB_TOKEN}`,
+                        'Authorization': `Bearer ${config.GITHUB_TOKEN}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const data = await response.json();
+                
+                // بررسی وجود فایل
+                if (!data.files || !data.files['rewards.json']) {
+                    throw new Error('فایل rewards.json یافت نشد');
+                }
+                
                 const rewards = JSON.parse(data.files['rewards.json'].content);
-        
                 const rewardsList = document.getElementById('rewardsList');
-                    rewards.forEach((reward, index) => {
+                
+                rewards.forEach((reward, index) => {
                     const newItem = document.createElement('div');
                     newItem.className = 'list-item';
                     newItem.id = `item${index + 4}`;
