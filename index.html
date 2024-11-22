@@ -89,17 +89,7 @@
                     }
                 });
                 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
                 const data = await response.json();
-                
-                // بررسی وجود فایل
-                if (!data.files || !data.files['rewards.json']) {
-                    throw new Error('فایل rewards.json یافت نشد');
-                }
-                
                 const rewards = JSON.parse(data.files['rewards.json'].content);
                 const rewardsList = document.getElementById('rewardsList');
                 
