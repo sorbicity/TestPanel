@@ -80,27 +80,29 @@
 
     </div>
     <script>
-        window.addEventListener('load', async function () {
+        let rewards = [];
+
+        window.addEventListener('load', async function() {
             try {
                 const response = await fetch('https://sorbia.pythonanywhere.com/rewards');
-                const rewards = await response.json();
-
+                rewards = await response.json(); // ذخیره در متغیر전역
+        
                 const rewardsList = document.getElementById('rewardsList');
-
+        
                 rewards.forEach((reward, index) => {
                     const newItem = document.createElement('div');
                     newItem.className = 'list-item';
                     newItem.id = `item${index}`;
-
+            
                     newItem.innerHTML = `
-                ${reward.icon}
-                <div class="item-content">
-                    <div class="item-title">${reward.name}</div>
-                    <div class="item-reward">${reward.value}</div>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            `;
-
+                        ${reward.icon}
+                        <div class="item-content">
+                            <div class="item-title">${reward.name}</div>
+                            <div class="item-reward">${reward.value}</div>
+                        </div>
+                        <i class="fas fa-chevron-right arrow-icon"></i>
+                    `;
+            
                     rewardsList.appendChild(newItem);
                 });
             } catch (error) {
