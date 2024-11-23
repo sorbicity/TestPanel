@@ -205,7 +205,7 @@
             fetch(`https://api.github.com/gists/${config.GIST_ID}`, {
                 method: 'PATCH',
                 headers: {
-                    'Authorization': `Bearer ${config.TOKEN_GITHUB}`,
+                    'Authorization': `token ${config.TOKEN_GITHUB}`,
                     'Accept': 'application/vnd.github.v3+json',
                     'Content-Type': 'application/json'
                 },
@@ -228,7 +228,6 @@
                 console.error('خطا:', error);
                 alert('خطا در ذخیره‌سازی جایزه');
             });
-        }
-    </script>
+        }    </script>
 </body>
 </html>
