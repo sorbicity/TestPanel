@@ -198,43 +198,26 @@
             }
         }
         function submitReward() {
-    const newReward = {
-        name: document.getElementById('rewardName').value,
-        value: document.getElementById('rewardValue').value,
-        icon: document.getElementById('selectedIcon').innerHTML,
-        function: document.getElementById('customFunction').value
-    };
+            const reward = {
+                name: document.getElementById('rewardName').value,
+                value: document.getElementById('rewardValue').value,
+                icon: document.getElementById('selectedIcon').innerHTML,
+                function: document.getElementById('customFunction').value
+            };
 
-    // استفاده از توکن شخصی گیت‌هاب
-    const token = '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';
-
-    fetch(`https://api.github.com/gists/${config.GIST_ID}`, {
-        method: 'PATCH',
-        headers: {
-            'Authorization': `token ${token}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            files: {
-                'rewards.json': {
-                    content: JSON.stringify([newReward])
-                }
-            }
-        })
-    })
-    .then(response => {
-        if(response.ok) {
-            alert('جایزه با موفقیت اضافه شد');
-        } else {
-            throw new Error('خطا در ذخیره‌سازی');
-        }
-    })
-    .catch(error => {
-        console.error('خطا:', error);
-        alert('خطا در ذخیره‌سازی جایزه');
-    });
-}   
+            fetch('http://localhost:8000/add-reward', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(reward)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('جایزه با موفقیت اضافه شد');
+                    }
+                });
+        }   
     </script>
 </body>
 
