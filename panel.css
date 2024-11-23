@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazir', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.panel-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    height: 150px;
+    font-family: monospace;
+}
+
+.icon-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.icon-btn {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.submit-btn {
+    background-color: #2ecc71;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#selectedIcon {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.icon-preview {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.icon-select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px;
+    margin-left: 10px;
+    background-color: white;
+}
+
+.icon-select option {
+    padding: 10px;
+}

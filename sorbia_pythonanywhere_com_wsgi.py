@@ -1,7 +1,6 @@
 import sys
-path = '/home/sorbia/sorbia.pythonanywhere.com'
+path = '/home/sorbia/mysite'
 if path not in sys.path:
     sys.path.append(path)
 
-from api import app
-application = app
+from api import wsgi_app as application
