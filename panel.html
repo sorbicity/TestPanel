@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -95,27 +96,28 @@
             align-items: center;
             margin-top: 10px;
         }
+
         .icon-select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    width: 200px;
-    margin-left: 10px;
-    background-color: white;
-}
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 200px;
+            margin-left: 10px;
+            background-color: white;
+        }
 
 
         .icon-select option {
             padding: 10px;
         }
-
     </style>
 </head>
+
 <body>
     <div class="panel-container">
         <h2 class="section-title">Add New Reward</h2>
-        
+
         <div class="form-group">
             <label for="rewardName">Name Reward</label>
             <input type="text" id="rewardName" placeholder="Example: Daily Reward">
@@ -130,96 +132,111 @@
             <label for="iconSection">Icon</label>
             <div id="iconSection" class="icon-section">
                 <button class="icon-btn" onclick="openIconSelector()">Icon Select</button>
-                <input type="file" id="iconUpload" class="hidden-input" accept="image/*" onchange="handleIconUpload(event)" aria-label="Upload Icon">
+                <input type="file" id="iconUpload" class="hidden-input" accept="image/*"
+                    onchange="handleIconUpload(event)" aria-label="Upload Icon">
             </div>
             <div class="icon-preview">
-                Icon Selected     <span id="selectedIcon"><i class="fas fa-gift"></i></span>
+                Icon Selected  <span id="selectedIcon"><i class="fas fa-gift"></i></span>
             </div>
         </div>
 
         <div class="form-group">
             <label for="customFunction">Custom function</label>
-            <textarea id="customFunction" placeholder="// Write function here function handleReward() {// Your code}"></textarea>
+            <textarea id="customFunction"
+                placeholder="// Write function here function handleReward() {// Your code}"></textarea>
         </div>
 
         <button class="submit-btn" onclick="submitReward()">Submit Reward</button>
     </div>
 
-      <script>
-          function createIconSelect() {
-              const icons = ['fas fa-home', 'fas fa-user', 'fas fa-envelope', 'fas fa-phone', 'fas fa-search', 'fas fa-star', 'fas fa-heart', 'fas fa-cog', 'fas fa-bars', 'fas fa-times', 'fas fa-check', 'fas fa-plus', 'fas fa-minus', 'fas fa-edit', 'fas fa-trash', 'fas fa-save', 'fas fa-print', 'fas fa-camera', 'fas fa-video', 'fas fa-music', 'fas fa-image', 'fas fa-file', 'fas fa-folder', 'fas fa-calendar', 'fas fa-clock', 'fas fa-map', 'fas fa-location-dot', 'fas fa-bell', 'fas fa-bookmark', 'fas fa-download', 'fas fa-upload', 'fas fa-share', 'fas fa-link', 'fas fa-lock', 'fas fa-unlock', 'fas fa-key', 'fas fa-gear', 'fas fa-wrench', 'fas fa-tools', 'fas fa-paint-brush', 'fas fa-pen', 'fas fa-pencil', 'fas fa-eraser', 'fas fa-copy', 'fas fa-paste', 'fas fa-cut', 'fas fa-undo', 'fas fa-redo', 'fas fa-rotate', 'fas fa-sync', 'fas fa-refresh', 'fas fa-spinner', 'fas fa-circle', 'fas fa-square', 'fas fa-triangle', 'fas fa-star', 'fab fa-facebook', 'fab fa-twitter', 'fab fa-instagram', 'fab fa-linkedin', 'fab fa-youtube', 'fab fa-github', 'fab fa-gitlab', 'fab fa-bitbucket', 'fas fa-cart-shopping', 'fas fa-credit-card', 'fas fa-money-bill', 'fas fa-coins', 'fas fa-truck', 'fas fa-shipping-fast', 'fas fa-box', 'fas fa-archive', 'fas fa-comments', 'fas fa-message', 'fas fa-envelope', 'fas fa-paper-plane', 'fas fa-wifi', 'fas fa-signal', 'fas fa-battery-full', 'fas fa-power-off', 'fas fa-sun', 'fas fa-moon', 'fas fa-cloud', 'fas fa-umbrella', 'fas fa-temperature-high', 'fas fa-temperature-low', 'fas fa-wind', 'fas fa-snowflake', 'fas fa-user-group', 'fas fa-users', 'fas fa-user-plus', 'fas fa-user-minus', 'fas fa-chart-line', 'fas fa-chart-bar', 'fas fa-chart-pie', 'fas fa-chart-area', 'fas fa-desktop', 'fas fa-laptop', 'fas fa-mobile', 'fas fa-tablet', 'fas fa-keyboard', 'fas fa-mouse', 'fas fa-headphones', 'fas fa-microphone', 'fas fa-camera-retro', 'fas fa-film', 'fas fa-play', 'fas fa-pause', 'fas fa-stop', 'fas fa-forward', 'fas fa-backward', 'fas fa-volume-high', 'fas fa-volume-low', 'fas fa-volume-off', 'fas fa-volume-xmark', 'fas fa-expand'];
-    
-              const select = document.createElement('select');
-              select.className = 'icon-select';
-    
-              const defaultOption = document.createElement('option');
-              defaultOption.text = 'Select an icon';
-              defaultOption.value = '';
-              select.appendChild(defaultOption);
-    
-              icons.forEach(icon => {
-                  const option = document.createElement('option');
-                  option.value = icon;
-                  option.text = icon;
-                  select.appendChild(option);
-              });
-    
-              select.addEventListener('change', function() {
-                  if (this.value) {
-                      document.getElementById('selectedIcon').innerHTML = `<i class="${this.value} fa-3x"></i>`;
-                  }
-              });
+    <script>
+        function createIconSelect() {
+            const icons = ['fas fa-home', 'fas fa-user', 'fas fa-envelope', 'fas fa-phone', 'fas fa-search', 'fas fa-star', 'fas fa-heart', 'fas fa-cog', 'fas fa-bars', 'fas fa-times', 'fas fa-check', 'fas fa-plus', 'fas fa-minus', 'fas fa-edit', 'fas fa-trash', 'fas fa-save', 'fas fa-print', 'fas fa-camera', 'fas fa-video', 'fas fa-music', 'fas fa-image', 'fas fa-file', 'fas fa-folder', 'fas fa-calendar', 'fas fa-clock', 'fas fa-map', 'fas fa-location-dot', 'fas fa-bell', 'fas fa-bookmark', 'fas fa-download', 'fas fa-upload', 'fas fa-share', 'fas fa-link', 'fas fa-lock', 'fas fa-unlock', 'fas fa-key', 'fas fa-gear', 'fas fa-wrench', 'fas fa-tools', 'fas fa-paint-brush', 'fas fa-pen', 'fas fa-pencil', 'fas fa-eraser', 'fas fa-copy', 'fas fa-paste', 'fas fa-cut', 'fas fa-undo', 'fas fa-redo', 'fas fa-rotate', 'fas fa-sync', 'fas fa-refresh', 'fas fa-spinner', 'fas fa-circle', 'fas fa-square', 'fas fa-triangle', 'fas fa-star', 'fab fa-facebook', 'fab fa-twitter', 'fab fa-instagram', 'fab fa-linkedin', 'fab fa-youtube', 'fab fa-github', 'fab fa-gitlab', 'fab fa-bitbucket', 'fas fa-cart-shopping', 'fas fa-credit-card', 'fas fa-money-bill', 'fas fa-coins', 'fas fa-truck', 'fas fa-shipping-fast', 'fas fa-box', 'fas fa-archive', 'fas fa-comments', 'fas fa-message', 'fas fa-envelope', 'fas fa-paper-plane', 'fas fa-wifi', 'fas fa-signal', 'fas fa-battery-full', 'fas fa-power-off', 'fas fa-sun', 'fas fa-moon', 'fas fa-cloud', 'fas fa-umbrella', 'fas fa-temperature-high', 'fas fa-temperature-low', 'fas fa-wind', 'fas fa-snowflake', 'fas fa-user-group', 'fas fa-users', 'fas fa-user-plus', 'fas fa-user-minus', 'fas fa-chart-line', 'fas fa-chart-bar', 'fas fa-chart-pie', 'fas fa-chart-area', 'fas fa-desktop', 'fas fa-laptop', 'fas fa-mobile', 'fas fa-tablet', 'fas fa-keyboard', 'fas fa-mouse', 'fas fa-headphones', 'fas fa-microphone', 'fas fa-camera-retro', 'fas fa-film', 'fas fa-play', 'fas fa-pause', 'fas fa-stop', 'fas fa-forward', 'fas fa-backward', 'fas fa-volume-high', 'fas fa-volume-low', 'fas fa-volume-off', 'fas fa-volume-xmark', 'fas fa-expand'];
 
-              const iconSection = document.getElementById('iconSection');
-              // حذف دکمه قبلی
-              const oldButton = iconSection.querySelector('.icon-btn');
-              if (oldButton) {
-                  iconSection.removeChild(oldButton);
-              }
-    
-              iconSection.insertBefore(select, iconSection.firstChild);
-          }
+            const select = document.createElement('select');
+            select.className = 'icon-select';
 
-          // اجرای تابع هنگام لود صفحه
-          window.addEventListener('load', createIconSelect);
+            const defaultOption = document.createElement('option');
+            defaultOption.text = 'Select an icon';
+            defaultOption.value = '';
+            select.appendChild(defaultOption);
+
+            icons.forEach(icon => {
+                const option = document.createElement('option');
+                option.value = icon;
+                option.text = icon;
+                select.appendChild(option);
+            });
+
+            select.addEventListener('change', function () {
+                if (this.value) {
+                    document.getElementById('selectedIcon').innerHTML = `<i class="${this.value} fa-3x"></i>`;
+                }
+            });
+
+            const iconSection = document.getElementById('iconSection');
+            // حذف دکمه قبلی
+            const oldButton = iconSection.querySelector('.icon-btn');
+            if (oldButton) {
+                iconSection.removeChild(oldButton);
+            }
+
+            iconSection.insertBefore(select, iconSection.firstChild);
+        }
+
+        // اجرای تابع هنگام لود صفحه
+        window.addEventListener('load', createIconSelect);
 
 
-          function handleIconUpload(event) {
-              const file = event.target.files[0];
-              if (file) {
-                  const reader = new FileReader();
-                  reader.onload = function(e) {
-                      document.getElementById('selectedIcon').innerHTML = 
-                          `<img src="${e.target.result}" class="uploaded-icon" alt="Uploaded Icon">`;
-                  }
-                  reader.readAsDataURL(file);
-              }
-          }
+        function handleIconUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('selectedIcon').innerHTML =
+                        `<img src="${e.target.result}" class="uploaded-icon" alt="Uploaded Icon">`;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
 
-          async function submitReward() {
-              const rewardData = {
-                  name: document.getElementById('rewardName').value,
-                  value: document.getElementById('rewardValue').value,
-                  icon: document.getElementById('selectedIcon').innerHTML,
-                  function: document.getElementById('customFunction').value
-              };
+        function submitReward() {
+            const newReward = {
+                name: document.getElementById('rewardName').value,
+                value: document.getElementById('rewardValue').value,
+                icon: document.getElementById('selectedIcon').innerHTML,
+                function: document.getElementById('customFunction').value
+            };
 
-              const response = await fetch(`https://api.github.com/gists/${config.GIST_ID}`, {
-                  method: 'PATCH',
-                  headers: {
-                      'Authorization': `token ${config.GITHUB_TOKEN}`,
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                      files: {
-                          'rewards.json': {
-                              content: JSON.stringify(rewardData)
-                          }
-                      }
-                  })
-              });
-          }
-      </script>
-  </body>
+            fetch(`https://api.github.com/gists/${config.GIST_ID}`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${config.GITHUB_TOKEN}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    files: {
+                        'rewards.json': {
+                            content: JSON.stringify([newReward])
+                        }
+                    }
+                })
+            })
+            .then(response => {
+                if(response.ok) {
+                    alert('جایزه با موفقیت اضافه شد');
+                } else {
+                    throw new Error('خطا در ذخیره‌سازی');
+                }
+            })
+            .catch(error => {
+                console.error('خطا:', error);
+                alert('خطا در ذخیره‌سازی جایزه');
+            });
+        }
+    </script>
 </body>
+</body>
+
 </html>
