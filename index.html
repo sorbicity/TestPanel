@@ -107,19 +107,22 @@
                 console.error('خطا در دریافت اطلاعات:', error);
             }
         });
-
-
-        function handleItemClick(itemId, reward) {
-            const rewards = JSON.parse(localStorage.getItem('rewards') || '[]');
-            const rewardIndex = parseInt(itemId.replace('item', '')) - 4;
-
-            if (rewardIndex >= 0 && rewards[rewardIndex]) {
-                eval(rewards[rewardIndex].function);
-            } else {
-                console.log(`آیتم ${itemId} کلیک شد -ا پاداش: ${reward}`);
-                alert(`پاداش شما به مقدار ${reward} دریافت شد!`);
+            function handleItemClick(itemId, reward) {
+                try {
+                    const rewardIndex = parseInt(itemId.replace('item', ''));
+                    const customFunction = rewards[rewardIndex].function;
+                
+                    if (customFunction) {
+                        // اجرای تابع سفارشی
+                        eval(customFunction);
+                    } else {
+                        alert(`پاداش شما به مقدار ${reward} دریافت شد!`);
+                    }
+                } catch (error) {
+                    console.log(`آیتم ${itemId} کلیک شد - پاداش: ${reward}`);
+                    alert(`پاداش شما به مقدار ${reward} دریافت شد!`);
+                }
             }
-        }
 
         document.getElementById('rewardsList').addEventListener('click', function (e) {
             if (e.target.closest('.list-item')) {
