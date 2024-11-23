@@ -111,7 +111,7 @@
                 try {
                     const rewardIndex = parseInt(itemId.replace('item', ''));
                     const customFunction = rewards[rewardIndex].function;
-                
+                    console.log(customFunction);
                     if (customFunction) {
                         // اجرای تابع سفارشی
                         eval(customFunction);
