@@ -205,40 +205,36 @@
         function: document.getElementById('customFunction').value
     };
 
-    fetch('https://gist.githubusercontent.com/sorbicity/9bcbcec8844698d54632f7772f3eb081/raw/rewards.json')
-    .then(response => response.json())
-    .then(currentRewards => {
-        currentRewards.push(newReward);
-        
-        return fetch(`https://api.github.com/gists/${config.GIST_ID}`, {
-            method: 'PATCH',
-            headers: {
-                'Authorization': `token ${config.TOKEN_GITHUB}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                files: {
-                    'rewards.json': {
-                        content: JSON.stringify(currentRewards)
-                    }
+    // استفاده از توکن شخصی گیت‌هاب
+    const token = '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';
+
+    fetch(`https://api.github.com/gists/${config.GIST_ID}`, {
+        method: 'PATCH',
+        headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            files: {
+                'rewards.json': {
+                    content: JSON.stringify([newReward])
                 }
-            })
-        });
+            }
+        })
     })
     .then(response => {
         if(response.ok) {
             alert('جایزه با موفقیت اضافه شد');
-            document.getElementById('rewardName').value = '';
-            document.getElementById('rewardValue').value = '';
-            document.getElementById('customFunction').value = '';
+        } else {
+            throw new Error('خطا در ذخیره‌سازی');
         }
     })
     .catch(error => {
         console.error('خطا:', error);
         alert('خطا در ذخیره‌سازی جایزه');
     });
-}
-   
+}   
     </script>
 </body>
 
